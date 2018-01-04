@@ -1,0 +1,25 @@
+{
+  "name": "tweet2markov",
+  "version": "1.0.0",
+  "description": "Create Markov chains from tweets",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CalJersey/Tweet2Markov.git"
+  },
+  "author": "CalJersey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CalJersey/Tweet2Markov/issues"
+  },
+  "homepage": "https://github.com/CalJersey/Tweet2Markov#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "doppel-tweet": "^1.2.0",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.0-rc1"
+  }
+}
