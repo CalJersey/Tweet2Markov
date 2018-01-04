@@ -21,10 +21,17 @@
     res.sendFile('/public/views/index.html' , { root : __dirname});
   });
 
-  // app.get('/colors/:color', function(req,res){
-  //   res.send(`You Picked:  ${req.params.color}`)
-  //
-  // })
+  app.get('/generate', function(req,res){
+    //res.send(`You Picked:  ${req.params.color}`)
+    let Doppel = require('doppel-tweet');
+    let config = require('./twitter-keys');
+
+    let donnie = new Doppel('realdonaldtrump', config);
+    donnie.update().then(function(){
+     let phrase = donnie.generate();
+     res.json(phrase);
+    });
+  })
   //
   // app.get('/thank/:name', function(req,res){
   //   let name = req.params.name;
