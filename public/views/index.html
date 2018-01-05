@@ -6,12 +6,24 @@
 
     <title>Tweet2Markov</title>
 
-    <!-- STYLESHEETS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../styles/styles.css">
-
-    <!-- VENDOR SCRIPTS -->
+    <!-- SCRIPTS & STYLESHEETS -->
+    <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Materialize icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <!-- custom css -->
+    <link rel="stylesheet" href="../styles/styles.css">
 
     <!-- APPLICATION SCRIPTS -->
     <script src="../scripts/app.js"></script>
@@ -21,11 +33,17 @@
     <h1>Tweet2Markov</h1>
     <p class="titleText">This app selects tweets from Twitter feeds and uses them to generate Markov chains.</p>
 
-    <div class="Twitter">
+    <div id="Twitter">
+      <div class="input-field inline">
+        <i class="material-icons prefix">account_circle</i>
+        <input type="text" id="TwitterName" name="TwitterName">
+        <label for="TwitterName">Twitter Name</label>
+      </div>
+      <a class="waves-effect waves-light btn"><img src="../images/chain.png" id="icon_chain" >generate</a>
+    </div>
+    <div id="Markov">
 
     </div>
-    <div class="Markov">
 
-    </div>
   </body>
 </html>

@@ -25,8 +25,9 @@
     //res.send(`You Picked:  ${req.params.color}`)
     let Doppel = require('doppel-tweet');
     let config = require('./twitter-keys');
+    let TwitterName = req.query.TN;
 
-    let donnie = new Doppel('realdonaldtrump', config);
+    let donnie = new Doppel(TwitterName, config);
     donnie.update().then(function(){
      let phrase = donnie.generate();
      res.json(phrase);

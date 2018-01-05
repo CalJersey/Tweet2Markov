@@ -1,16 +1,22 @@
 console.log("Sanity Check: JS is working!");
 
 $(document).ready(function(){
-  $.ajax({
-     method: 'GET',
-     url: '/generate',
-     success: handleSuccess,
-     error: handleError
-   });
+
 
 });
 
-
+function getMarkov() {
+  let TwitterName = $("#TwitterName");
+  if (TwitterName[0] == '@') TwitterName = TwitterName.substr(1);
+  if (TwitterName.val()) {
+    $.ajax({
+       method: 'GET',
+       url: `/generate?TN=${TwitterName}`,
+       success: handleSuccess,
+       error: handleError
+    });
+  }
+}
 
 function handleSuccess(json) {
   console.log(json)
