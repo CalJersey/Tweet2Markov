@@ -1,14 +1,17 @@
 console.log("Sanity Check: JS is working!");
 
-$(document).ready(function(){
-
-
-});
+// $(document).ready(function(){
+//
+//
+// });
 
 function getMarkov() {
-  let TwitterName = $("#TwitterName");
-  if (TwitterName[0] == '@') TwitterName = TwitterName.substr(1);
-  if (TwitterName.val()) {
+  let TwitterName = document.getElementById("TwitterName").value;
+console.log(TwitterName);
+  if (TwitterName.length) {
+    //Trim @ sign if exists
+    if (TwitterName[0] == '@') TwitterName = TwitterName.substr(1);
+
     $.ajax({
        method: 'GET',
        url: `/generate?TN=${TwitterName}`,

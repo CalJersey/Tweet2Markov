@@ -11,7 +11,7 @@ body {
   align: center;
 }
 
-p, div, div.input-field, div.container, input, .input-field label {
+p, div, div.input-field, div.container, input-field {
   color: #9b6f3f;
 }
 
@@ -30,10 +30,16 @@ p.titleText {
   width: 100%
 }
 
- /* icon prefix focus color */
- .input-field .prefix.active {
-   color: #1ea8e0;
- }
+/* icon prefix focus color */
+.input-field .prefix.active {
+ color: #1ea8e0;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #1ea8e0;
+  box-shadow: 0 1px 0 0 #1ea8e0
+}
+
 
 .btn {
   background-color: #9b6f3f;

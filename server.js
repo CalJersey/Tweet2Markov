@@ -25,11 +25,12 @@
     //res.send(`You Picked:  ${req.params.color}`)
     let Doppel = require('doppel-tweet');
     let config = require('./twitter-keys');
-    let TwitterName = req.query.TN;
+    let TwitterName = 'SarahKSilverman';
 
-    let donnie = new Doppel(TwitterName, config);
-    donnie.update().then(function(){
-     let phrase = donnie.generate();
+    console.log(TwitterName)
+    let doppel = new Doppel(TwitterName, config);
+    doppel.update().then(function(){
+     let phrase = doppel.generate();
      res.json(phrase);
     });
   })
