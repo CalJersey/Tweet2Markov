@@ -10,7 +10,7 @@ function getMarkov() {
 console.log(TwitterName);
   if (TwitterName.length) {
     //Trim @ sign if exists
-    if (TwitterName[0] == '@') TwitterName = TwitterName.substr(1);
+    //if (TwitterName[0] == '@') TwitterName = TwitterName.substr(1);
 
     $.ajax({
        method: 'GET',
