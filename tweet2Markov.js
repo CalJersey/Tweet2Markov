@@ -103,9 +103,6 @@ class TwitterBot {
     let count = 0
     let get = (max_id) => {
       this.twitterClient.get('statuses/user_timeline', {screen_name: this.options.account, max_id: max_id, count: 200, exclude_replies: true, include_rts: false}, (error, timeline, response) => {
-        console.log(`error=${error}`)
-        console.log(`timeline=${timeline}`)
-        console.log(`response=${response}`)
         if (error) throw new Error(error[0].message)
         timeline.forEach((e, i, a) => {
           const tweetText = unescape(e.text)

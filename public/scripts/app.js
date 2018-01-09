@@ -12,7 +12,7 @@ function getMarkov() {
 
   if (TwitterName.length) {
     //working icon
-    displaySpinner();
+    toggleSpinner();
 
     $.ajax({
        method: 'GET',
@@ -27,7 +27,7 @@ function getMarkov() {
 
 function handleSuccess(json) {
   console.log(json)
-  hideSpinner();
+  toggleSpinner();
   // let content=JSON.parse(json);
   // contentNew =  content.forEach(function(v,i){
   //    `<div>${v.name}</div>`
@@ -37,7 +37,7 @@ function handleSuccess(json) {
 
 function handleError(xhr, status, errorThrown) {
   console.log('uh oh');
-  hideSpinner();
+  toggleSpinner();
 }
 
 function displayError(msg) {
@@ -47,3 +47,15 @@ function displayError(msg) {
 function clearError() {
   document.getElementById("errorText").innerHTML = '';
 }
+
+function toggleSpinner() {
+  $('#generateButton').toggle();
+  $('#iconChain').toggle();
+  $('#spinner').toggle();
+}
+
+// function hideSpinner() {
+//   document.getElementById('spinner').style.display = 'none';
+//  document.getElementById('generateButton').style.display = 'inline';
+//   document.getElementById('iconChain').style.display = 'inline';
+// }
