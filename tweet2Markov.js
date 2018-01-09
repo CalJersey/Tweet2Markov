@@ -124,7 +124,7 @@ class TwitterBot {
       })
     }
     get()
-    console.log(`arrayOfTweets=${this.arrayOfTweets}`)
+    //console.log(`arrayOfTweets=${this.arrayOfTweets}`)
   }
 
   generateTweet (callback) {
@@ -132,14 +132,14 @@ class TwitterBot {
       console.log('arrayOfTweets was empty!')
       this.getTweets()
     }
-    console.log(`arrayOfTweets=${this.arrayOfTweets}`);
+    //console.log(`arrayOfTweets=${this.arrayOfTweets}`);
     let markov = new MarkovGen({
       input: this.arrayOfTweets,
       minLength: 6
     })
-    console.log(`markov=${JSON.stringify(markov)}`);
+    //console.log(`markov=${JSON.stringify(markov)}`);
     let tweet = markov.makeChain()
-    console.log(`tweet=${tweet}`);
+    //console.log(`tweet=${tweet}`);
     while (tweet.length > 140 || !tipots(tweet) || this.checkForBannedWords(tweet) || this.checkForAts(tweet) || this.checkForHashtags(tweet)) {
       tweet = markov.makeChain()
     }

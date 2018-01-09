@@ -26,8 +26,12 @@ p.titleText {
   text-align: center;
 }
 
+div.twitter {
+  margin: 5px;
+}
+
 #accountCircle {
-    margin-top: 13px;
+    margin-top: 10px;
 }
 
 #errorText {
@@ -39,6 +43,10 @@ p.titleText {
 
 .container {
   width: 100%
+}
+
+.input-field .prefix {
+  font-size: 2.8rem;
 }
 
 /* icon prefix focus color */
@@ -55,11 +63,11 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
   background-color: #9b6f3f;
   border-radius: 6px;
   height:auto;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  margin-top: 12px;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-top: 15px;
   line-height: 1.2rem;
   color: #1ea8e0;
   font-weight: 700;
@@ -70,8 +78,8 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
 }
 
 #iconChain {
-  width: 38px;
-  height: 11px;
+  width: 42px;
+  height: 13px;
   float: right;
   text-align: center;
   padding: 0px;
@@ -81,7 +89,9 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
 
 #spinner {
   display: none;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border: 0px;
+  margin-bottom: -30px;
+  /*float: right; */
 }
