@@ -1,3 +1,14 @@
+function getTweets(req,res){
+  let page = req.query.page || 1;
+  let limit = req.query.limit || 20;
+  let skip = (page - 1) * 20;
+
+  db.Tweet.find().skip(skip).limit(limit,function(err, tweets){
+    if (err) {res.status(500).json({error:err.message});}
+    res.json(tweets);
+  });
+}
+
 function generate(req,res){
   //Set twitter account name based on value passed
   let TwitterName = req.query.TN || null;
@@ -27,5 +38,6 @@ function generate(req,res){
 }
 
 module.exports = {
+  getTweets: getTweets,
   generate: generate,
 }

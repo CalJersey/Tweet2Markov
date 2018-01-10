@@ -5,7 +5,7 @@ body {
   max-width: 600px;
   padding: 20px;
   margin: 20px;
-  background-color: #a1dff8;
+  background-color: #6cc4e8;
   border: 2px solid #9b6f3f;
   border-radius: 8px;
   align: center;
@@ -94,4 +94,13 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
   border: 0px;
   margin-bottom: -30px;
   /*float: right; */
+}
+
+#logo {
+  width: 159px;
+  height: 227px;
+  border: 0px;
+  margin-right: -50px;
+  margin-top: -40px;
+  float: right;
 }

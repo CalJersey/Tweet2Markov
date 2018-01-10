@@ -4,9 +4,6 @@
   let bodyParser = require('body-parser');
   let app = express();
   db = require('./models');
-
-  // server.js
-
   //Middleware
   app.use(express.static('public'));
 
@@ -24,6 +21,8 @@
   app.get('/', function (req, res) {
     res.sendFile('public/views/index.html' , { root : __dirname});
   });
+
+  app.get('/getTweets', controllers.ctrl_tweet2Markov.getTweets);
 
   app.get('/generate', controllers.ctrl_tweet2Markov.generate);
 
