@@ -104,3 +104,43 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
   margin-top: -40px;
   float: right;
 }
+
+div#markov {
+  line-height: 1rem;
+}
+
+#markovNewTweetTitle, #markovListTitle {
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+div.twitterName {
+  align: right;
+  float: right;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+div.tweet {
+  margin-right: 20px;
+}
+
+div.tweet:after {
+  content: "";
+  display: table;
+  clear: both;
+  margin-bottom: 15px;
+}
+
+div#moreLink {
+  color: #999;
+  align: right;
+  float: right;
+  margin-right: 20px;
+}
+
+div#morelink a {
+  color: #0097d4;
+}
+
+<div id="moreLink"></div>

@@ -26,6 +26,7 @@ function getMarkov() {
        url: `/generate?TN=${TwitterName}`,
        success: updateTweetList,
        error: handleError,
+       dataType: "json"
     });
   } else {
     displayError("Please enter a twitter handle to generate the Markov chain from.");
@@ -40,13 +41,14 @@ function getTweetList() {
      method: 'GET',
      url: `/getTweets?page=${page}&limit=${limit}`,
      success: buildTweetList,
-     error: handleError
+     error: handleError,
+     dataType: "json",
   });
 }
 
 //format tweet content for display
 function formatTweet(tweet, twitterName) {
-  return `<li class="tweet">"${tweet}"<div class="twitterName">-impersonating ${twitterName}</div></li>`;
+  return `<div class="tweet">"${tweet}"<div class="twitterName">-impersonating ${twitterName}</div></div>`;
 }
 
 //add tweets to page
@@ -86,7 +88,7 @@ function updateTweetList(content) {
 
   //ensure new tweet title is populated
   titleDiv = document.getElementById("markovNewTweetTitle");
-  titleDiv.innerHTML = "Your new Markov chain tweet";
+  titleDiv.innerHTML = "Your New Markov Chain Tweet:";
 
   //move newest tweet to tweet list
   let newDiv = document.getElementById("markovNewTweet");
@@ -94,7 +96,7 @@ function updateTweetList(content) {
 
   listDiv.innerHTML = newDiv.innerHTML + listDiv.innerHTML;
 
-  newDiv.innerHTML = formatTweet(tweetText,twitterName);
+  newDiv.innerHTML = formatTweet(tweetText.tweetText,twitterName);
 
   // let content=JSON.parse(json);
   // contentNew =  content.forEach(function(v,i){

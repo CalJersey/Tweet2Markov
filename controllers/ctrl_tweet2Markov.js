@@ -1,3 +1,5 @@
+let tweetModel = require('../models/tweet');
+
 function getTweets(req,res){
   let page = req.query.page;
   if (page) {page = parseInt(page)}
@@ -6,7 +8,7 @@ function getTweets(req,res){
 
   let skip = (page - 1) * 20;
 
-  db.Tweet.find({},{},{skip:skip,limit:limit,sort:{'_id':1}},function(err, tweets){
+  db.Tweet.find({},{},{skip:skip,limit:limit,sort:{'_id':-1}},function(err, tweets){
     if (err) {
       res.status(500).json({error:err.message});
     }
@@ -16,14 +18,14 @@ function getTweets(req,res){
 
 function generate(req,res){
   //Set twitter account name based on value passed
-  let TwitterName = req.query.TN || null;
+  let twitterName = req.query.TN || null;
 
   //initialize tweet2Markov obj type
   const TwitterBot = require('../Tweet2Markov')
 
   //options for tweet2Markov instance
   const options = {
-    account: TwitterName,
+    account: twitterName,
     twitter: {
       consumer_key: '0TdIxcIp7J1RIeC1quYVbyf7P',
       consumer_secret: 'GpxeM3hCDw09JbABkclHFuoO6ZaQ0rTDlCK5KxVCpavRI3RvT3',
@@ -32,14 +34,20 @@ function generate(req,res){
     }
   }
   //tweet2Markov instance
-  let bot = new TwitterBot( options )
+  let bot = new TwitterBot( options );
   //retrieve tweets
   bot.getTweets(() => {
     //generate Markov chain from retrieved tweets
-    let tweet = bot.generateTweet()
-    //send Markov chain as json response
-    res.json(tweet)
-  })
+    let tweetText = bot.generateTweet();
+    //add to db
+    //let Tweet = tweetModel('tweet',TweetSchema);
+    //tweet = new Tweet()
+    db.Tweet.create({tweetText:tweetText,twitterName:twitterName}, function(err, tweet) {
+      if (err) { console.log('error', err); }
+      console.log(tweet);
+      res.send(tweet);
+    });
+  });
 }
 
 module.exports = {
