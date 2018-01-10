@@ -11,7 +11,7 @@ var tweet_list = [
   {
   twitterName: "elonmusk",
   tweetText: "Using a neural net to detect rain using cameras (no dedicated rain or sun sensors). Computers are very patient.",
-  }
+  },
   {
   twitterName: "elonmusk",
   tweetText: "Come work at the biggest & most advanced factory on Earth! Located by a river near the beautiful Sierra Nevada mountains with wild horses roaming free.",

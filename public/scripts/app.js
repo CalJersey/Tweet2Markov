@@ -4,7 +4,7 @@ let page = 0;
 const limit = 20;
 
 $(document).ready(function(){
-  //initial set of psXX Markov
+
   getTweetList();
 
 });
@@ -35,7 +35,6 @@ function getMarkov() {
 function getTweetList() {
   //increment page var to grab next pages records
   page += 1;
-
   //grab page of tweets
   $.ajax({
      method: 'GET',
@@ -51,22 +50,28 @@ function formatTweet(tweet, twitterName) {
 }
 
 //add tweets to page
-function buildTweetList(json){
-  let div = Document.getElementById(tweetList);
-  let content;
+function buildTweetList(tweets){
+  let div = document.getElementById("markovList");
+  let content = '';
   let moreLink = document.getElementById("moreLink");
+  let listTitle = document.getElementById("markovListTitle");
+
+  tweets = JSON.parse(JSON.stringify(tweets));
+
+  //list title
+  if (tweets && !listTitle.innerHTML) {listTitle.innerHTML = 'Recent Markov Chains:'}
 
   //build content
-  json.forEach(function(item,index){
+  tweets.forEach(function(item,index){
     content = content + formatTweet(item.tweetText,item.twitterName);
   })
 
   //append to tweetlist
-  div += content;
+  div.innerHTML = div.innerHTML + content;
 
   //if displaying a full set of tweets display link to get more
-  if (json.length = limit) {
-    moreLink.innerHTML = '<a onClick="getTweetList();">&lt;&lt; more &gt;&gt;';
+  if (tweets.length == limit) {
+    moreLink.innerHTML = '<a onClick="getTweetList();">&lt;&lt; more &gt;&gt;</a>';
   } else {
     //otherwise signify end
     moreLink.innerHTML = '<span class="contentEnd">-- end --</span>'
@@ -74,6 +79,8 @@ function buildTweetList(json){
 }
 
 function updateTweetList(content) {
+  tweetText = JSON.parse(JSON.stringify(content));
+  twitterName = document.getElementById("TwitterName").value;
   //stop spinner
   toggleSpinner();
 
@@ -87,7 +94,7 @@ function updateTweetList(content) {
 
   listDiv.innerHTML = newDiv.innerHTML + listDiv.innerHTML;
 
-  newDiv.innerHTML = formatTweet(content.tweetText,content.twitterName);
+  newDiv.innerHTML = formatTweet(tweetText,twitterName);
 
   // let content=JSON.parse(json);
   // contentNew =  content.forEach(function(v,i){
@@ -100,7 +107,9 @@ function handleError(xhr, status, errorThrown) {
   // console.log(`xhr=${xhr}`);
   // console.log(`status=${status}`);
   // console.log(`errorThrown=${errorThrown}`);
-  toggleSpinner();
+  if (document.getElementById("spinner").style.display == 'visible') {
+    toggleSpinner();
+  }
   let msg = 'An unknown error has occurred.'
   displayError(msg);
 }

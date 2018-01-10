@@ -1,10 +1,15 @@
 function getTweets(req,res){
-  let page = req.query.page || 1;
+  let page = req.query.page;
+  if (page) {page = parseInt(page)}
   let limit = req.query.limit || 20;
+  if (limit) {limit = parseInt(limit)}
+
   let skip = (page - 1) * 20;
 
-  db.Tweet.find().skip(skip).limit(limit,function(err, tweets){
-    if (err) {res.status(500).json({error:err.message});}
+  db.Tweet.find({},{},{skip:skip,limit:limit,sort:{'_id':1}},function(err, tweets){
+    if (err) {
+      res.status(500).json({error:err.message});
+    }
     res.json(tweets);
   });
 }
