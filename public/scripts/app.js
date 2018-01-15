@@ -72,7 +72,7 @@ function buildTweetList(tweets){
   div.innerHTML = div.innerHTML + content;
 
   //if displaying a full set of tweets display link to get more
-  if (tweets.length == limit) {
+  if (tweets.length >= limit) {
     moreLink.innerHTML = '<a onClick="getTweetList();">&lt;&lt; more &gt;&gt;</a>';
   } else {
     //otherwise signify end
