@@ -109,7 +109,7 @@ function handleError(xhr, status, errorThrown) {
   // console.log(`xhr=${xhr}`);
   // console.log(`status=${status}`);
   // console.log(`errorThrown=${errorThrown}`);
-  if (document.getElementById("spinner").style.display == 'visible') {
+  if (document.getElementById("spinner").style.display == 'inline') {
     toggleSpinner();
   }
   let msg = 'An unknown error has occurred.'
