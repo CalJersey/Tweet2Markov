@@ -21,7 +21,7 @@ function generate(req,res){
   let twitterName = req.query.TN || null;
 
   //initialize tweet2Markov obj type
-  const TwitterBot = require('../Tweet2Markov')
+  const TwitterBot = require('../tweet2Markov')
 
   //options for tweet2Markov instance
   const options = {
