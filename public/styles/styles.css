@@ -4,7 +4,7 @@ body {
   width:auto;
   max-width: 600px;
   padding: 20px;
-  margin: 20px;
+  margin: 25px;
   background-color: #6cc4e8;
   border: 2px solid #9b6f3f;
   border-radius: 8px;
@@ -153,7 +153,7 @@ div#morelink a {
   }
 }
 
-@media (max-width: 488px) {
+@media (max-width: 496px) {
   #iconChain {
     display: none;
   }
